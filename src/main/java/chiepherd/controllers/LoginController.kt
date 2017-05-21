@@ -17,6 +17,7 @@ import java.net.URL
 import java.util.*
 
 import Main
+import chiepherd.annotations.RabbitMessage
 import javafx.scene.layout.AnchorPane
 import javafx.scene.layout.BorderPane
 
@@ -30,7 +31,7 @@ class LoginController : Initializable {
         println("INIT View Login")
     }
 
-    @FXML fun onSignUp(actionEvent : ActionEvent?) {
+    @RabbitMessage("Sign Up rbt") @FXML fun onSignUp(actionEvent : ActionEvent?) {
         println("Sign up")
         if(actionEvent == null) { return }
 
