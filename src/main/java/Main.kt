@@ -10,13 +10,13 @@ import javafx.stage.Stage
 import chiepherd.controllers.*
 
 class Main : Application() {
-    var primaryStage : Stage? = null
-    var rootLayout : VBox? = null
-    var contentLayout : AnchorPane? = null
+    lateinit var primaryStage : Stage
+    lateinit var rootLayout : VBox
+    lateinit var contentLayout : AnchorPane
 
     override fun start(primaryStage: Stage) {
         this.primaryStage = primaryStage
-        this.primaryStage!!.title = "Chiepherd"
+        this.primaryStage.title = "Chiepherd"
 
         initRootLayout()
 
@@ -31,12 +31,12 @@ class Main : Application() {
         val loader = FXMLLoader()
         loader.location = Main::class.java.getResource("chiepherd/views/layouts/Application.fxml")
         rootLayout = loader.load<Any>() as VBox
-        contentLayout = rootLayout!!.lookup("#Content") as AnchorPane
+        contentLayout = rootLayout.lookup("#Content") as AnchorPane
 
         // Show the scene containing the root layout.
         val scene = Scene(rootLayout)
-        primaryStage!!.scene = scene
-        primaryStage!!.show()
+        primaryStage.scene = scene
+        primaryStage.show()
     }
 
     /**
@@ -47,7 +47,7 @@ class Main : Application() {
         loader.location = Main::class.java.getResource("chiepherd/views/Login.fxml")
         val personOverview = loader.load<BorderPane>()
 
-        contentLayout!!.children.add(personOverview)
+        contentLayout.children.add(personOverview)
     }
 }
 

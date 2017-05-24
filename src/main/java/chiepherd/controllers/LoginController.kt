@@ -21,7 +21,7 @@ import chiepherd.annotations.RabbitMessage
 import javafx.scene.layout.AnchorPane
 import javafx.scene.layout.BorderPane
 
-class LoginController : Initializable {
+class LoginController : ApplicationController() {
     @FXML lateinit var email    : JFXTextField
     @FXML lateinit var password : JFXPasswordField
     @FXML lateinit var sign_in  : JFXButton
@@ -31,27 +31,9 @@ class LoginController : Initializable {
         println("INIT View Login")
     }
 
-    @RabbitMessage("Sign Up rbt") @FXML fun onSignUp(actionEvent : ActionEvent?) {
+    @FXML fun onSignUp(actionEvent : ActionEvent?) {
         println("Sign up")
         if(actionEvent == null) { return }
-
-        val loader = FXMLLoader()
-        loader.location = Main::class.java.getResource("chiepherd/views/layouts/Application.fxml")
-
-        val home_parent = loader.load<VBox>()
-        val contentLayout = home_parent.lookup("#Content") as AnchorPane
-
-        val home_scene  = Scene(home_parent)
-
-        val home_stage = actionEvent.stage
-        home_stage.scene = home_scene
-        home_stage.show()
-
-
-        val loader_scene = FXMLLoader()
-        loader_scene.location = Main::class.java.getResource("chiepherd/views/SignUp.fxml")
-        val personOverview = loader_scene.load<BorderPane>()
-
-        contentLayout.children.add(personOverview)
+        switchScene(actionEvent, "chiepherd/views/SignUp.fxml")
     }
 }
