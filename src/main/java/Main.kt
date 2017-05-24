@@ -8,6 +8,7 @@ import javafx.scene.layout.GridPane
 import javafx.scene.layout.VBox
 import javafx.stage.Stage
 import chiepherd.controllers.*
+import chiepherd.services.RabbitMQ
 
 class Main : Application() {
     lateinit var primaryStage : Stage
@@ -21,6 +22,10 @@ class Main : Application() {
         initRootLayout()
 
         showPersonOverview()
+    }
+
+    override fun stop() {
+        RabbitMQ.instance.stop()
     }
 
     /**
@@ -52,5 +57,6 @@ class Main : Application() {
 }
 
 fun main(args: Array<String>) {
+    RabbitMQ.instance // Start RabbitMQ
     Application.launch(Main::class.java, *args)
 }

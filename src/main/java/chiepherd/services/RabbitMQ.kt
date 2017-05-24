@@ -20,8 +20,7 @@ class RabbitMQ private constructor() {
         channel    = connection.createChannel()
     }
 
-    protected fun finalize() {
-        println("Close RabbitMQ")
+    fun stop() {
         channel.close()
         connection.close()
     }

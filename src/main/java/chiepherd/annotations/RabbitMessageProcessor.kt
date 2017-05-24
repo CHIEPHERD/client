@@ -7,11 +7,21 @@ import javax.annotation.processing.RoundEnvironment
 import javax.annotation.processing.SupportedAnnotationTypes
 import javax.lang.model.element.TypeElement
 import javax.lang.model.element.VariableElement
+import java.nio.charset.Charset
+import java.nio.file.Files
+import java.nio.file.Paths
+import java.util.Arrays
+
+
 
 @SupportedAnnotationTypes("chiepherd.annotations.RabbitMessage")
 class RabbitMessageProcessor : AbstractProcessor() {
     override fun process(annotation : Set<TypeElement>, environment: RoundEnvironment) : Boolean {
-        println("berk")
+        val lines = Arrays.asList("The first line", "The second line")
+        val file = Paths.get("the-file-name.txt")
+        Files.write(file, lines, Charset.forName("UTF-8"))
+
+        println("Foo")
         environment.getElementsAnnotatedWith(RabbitMessage::class.java)
                 .asSequence()
                 .filterIsInstance<TypeElement>()

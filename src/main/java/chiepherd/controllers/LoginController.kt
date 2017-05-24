@@ -31,7 +31,7 @@ class LoginController : ApplicationController() {
         println("INIT View Login")
     }
 
-    @FXML fun onSignUp(actionEvent : ActionEvent?) {
+    @FXML @RabbitMessage("message") fun onSignUp(actionEvent : ActionEvent?) {
         println("Sign up")
         if(actionEvent == null) { return }
         switchScene(actionEvent, "chiepherd/views/SignUp.fxml")
