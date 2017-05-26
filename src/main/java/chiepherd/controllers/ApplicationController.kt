@@ -9,6 +9,8 @@ import extensions.javafx.event.stage
 import javafx.event.ActionEvent
 import javafx.scene.Scene
 import javafx.scene.layout.BorderPane
+import khttp.responses.Response
+
 
 abstract class ApplicationController : Initializable {
     val homeParent : VBox by lazy {
@@ -41,5 +43,9 @@ abstract class ApplicationController : Initializable {
         println(newScene(pathNewScene))
 
         contentLayout().children.add(newScene(pathNewScene))
+    }
+
+    protected fun displayError(res: Response) {
+        println(res.text)
     }
 }
