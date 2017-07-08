@@ -12,7 +12,7 @@ class RabbitMQ private constructor() {
         println("RabbitMQ Singleton /Should be once/")
 
         val factory = ConnectionFactory()
-        factory.host = "192.168.56.100"
+        factory.host = "192.168.56.200"
         factory.username = "root"
         factory.password = "root"
 

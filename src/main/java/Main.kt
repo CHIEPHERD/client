@@ -59,4 +59,5 @@ class Main : Application() {
 fun main(args: Array<String>) {
     RabbitMQ.instance // Start RabbitMQ
     Application.launch(Main::class.java, *args)
+    RabbitMQ.instance.stop()
 }
