@@ -98,6 +98,11 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <annotationProcessors>
+                        <processor>chiepherd.processors.TodoProcessor</processor>
+                    </annotationProcessors>
+                </configuration>
                 <executions>
                     <execution>
                         <id>compile</id>

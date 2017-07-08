@@ -1,9 +1,16 @@
 package chiepherd.services
 
+import chiepherd.annotations.LEVEL
+import chiepherd.annotations.Todo
 import com.rabbitmq.client.ConnectionFactory
 import com.rabbitmq.client.Connection
 import com.rabbitmq.client.Channel
 
+@Todo(
+        level = LEVEL.MINOR,
+        author = "Alexandre Lairan",
+        message = "Remove print here"
+)
 class RabbitMQ private constructor() {
     val connection : Connection
     val channel    : Channel
